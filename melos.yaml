@@ -7,3 +7,5 @@ packages:
 scripts:
   analyze:
     exec: dart analyze .
+  pub_get:
+    exec: flutter pub get
