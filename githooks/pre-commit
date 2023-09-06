@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# get a list of staged dart files in array
+# shellcheck disable=SC2207
+stagedFiles=($(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(dart)$'))
+
+for file in "${stagedFiles[@]}"
+do
+  dart format "$file"
+
+  # Add the file to staging if it passes the analysis
+  if dart analyze "$file"
+  then
+    git add "$file"
+  else
+    exit 1
+  fi
+done
+
+
+
