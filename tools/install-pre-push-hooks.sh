@@ -15,6 +15,12 @@ then
       echo 'melos test failed'
       exit 1
     fi"
+
+    echo "if ! dart format -o none --set-exit-if-changed .;
+    then
+      echo 'incorrect dart formatting'
+      exit 1
+    fi"
   } >> $hookFile
 
   chmod +x $hookFile
