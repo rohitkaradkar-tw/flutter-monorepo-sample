@@ -33,5 +33,5 @@ then
   echo 'pre-push hook added'
 else
   echo 'pre-push hook already present'
-  echo 'check .git/hooks/pre-push for more details'
+  echo 'consider deleting .git/hooks/pre-push'
 fi
