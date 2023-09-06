@@ -6,7 +6,7 @@ packages:
 
 scripts:
   analyze:
-    exec: dart analyze .
+    exec: flutter analyze .
   pub_get:
     exec: flutter pub get
   clean:

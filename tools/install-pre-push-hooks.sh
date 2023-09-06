@@ -21,6 +21,12 @@ then
       echo 'incorrect dart formatting'
       exit 1
     fi"
+
+    echo "if ! melos analyze;
+    then
+      echo 'melos analyze failed'
+      exit 1
+    fi"
   } >> $hookFile
 
   chmod +x $hookFile
