@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if ! melos test;
+then
+  echo 'melos test failed'
+  exit 1
+fi
+
+if ! dart format -o none --set-exit-if-changed .;
+then
+  echo 'incorrect dart formatting'
+  exit 1
+fi
+
+if ! melos analyze;
+then
+  echo 'melos analyze failed'
+  exit 1
+fi
