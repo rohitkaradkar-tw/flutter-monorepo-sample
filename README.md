@@ -9,4 +9,8 @@
     ```bash
     melos bootstrap
     ```
-
+4. Install git hooks
+    ```bash
+    chmod +x tools/install-pre-push-hooks.sh
+    ./tools/install-pre-push-hooks.sh
+    ```
