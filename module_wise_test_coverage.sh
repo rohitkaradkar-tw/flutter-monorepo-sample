@@ -2,6 +2,7 @@
 
 # Set the threshold
 THRESHOLD=80
+mkdir combined_coverage_report
 ROOT_DIR=$(pwd)
 
 melos run test_coverage
@@ -13,6 +14,10 @@ find . -name coverage | while read -r coverage_directory; do
   cd "$dir" || exit
   cd ../
   chmod +x .
+  # shellcheck disable=SC2046
+  lastField=$(basename $(dirname "$coverage_directory"))
+  echo "$lastField"
+
   rm -rf coverage_report
   mkdir coverage_report
   chmod +x coverage_report
@@ -30,6 +35,8 @@ find . -name coverage | while read -r coverage_directory; do
     echo "Coverage meets the threshold for this module."
   fi
 
+  cp -r coverage_report "$ROOT_DIR/combined_coverage_report/${lastField}_coverage_report"
+  rm -rf coverage_report
   cd "$ROOT_DIR" || exit
 done
 

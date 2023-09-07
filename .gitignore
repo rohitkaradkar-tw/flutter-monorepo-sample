@@ -14,6 +14,8 @@ pubspec_overrides.yaml
 migrate_working_dir/
 **/coverage/
 **/coverage_report/
+**/coverage_output/
+**/combined_coverage_report
 lcov*
 cmd_line*
 
