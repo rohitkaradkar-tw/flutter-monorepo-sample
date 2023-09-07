@@ -3,6 +3,7 @@
 # Set the threshold
 THRESHOLD=80
 mkdir combined_coverage_report
+chmod +x combined_coverage_report
 ROOT_DIR=$(pwd)
 
 melos run test_coverage
