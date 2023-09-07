@@ -7,10 +7,12 @@ class HomeScreenPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 'Home Screen' text centered in a page
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.redAccent,
-      body: Center(child: Text('Home Screen Feature')),
+      appBar: AppBar(
+        title: const Text('Counter app'),
+      ),
+      body: const Center(child: Text('Home Screen Feature')),
     );
   }
 }
