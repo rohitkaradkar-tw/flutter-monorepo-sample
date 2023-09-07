@@ -11,5 +11,5 @@ scripts:
     exec: flutter pub get
   clean:
     exec: flutter clean
-  test:
-    exec: flutter test
+  test_coverage:
+    exec: flutter test --coverage
