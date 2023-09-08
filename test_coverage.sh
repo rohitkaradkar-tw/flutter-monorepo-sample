@@ -49,7 +49,7 @@ done
 echo "All lcov files merged into $merged_file"
 
 # Generate the HTML report and capture the output
-output=$(genhtml "$merged_file" -o "$html_dir" 2>&1)
+output=$(python3 lcov_cobertura.py "$merged_file" --output "$html_dir" 2>&1)
 echo "$output"
 echo "HTML report generated in $html_dir"
 
