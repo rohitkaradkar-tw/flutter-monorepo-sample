@@ -4,7 +4,7 @@
 # workaround for this issue is in any of the test file we need to import untested file.
 # https://github.com/flutter/flutter/issues/27997
 
-
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 melos run test_coverage
 
 search_directory="."
