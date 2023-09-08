@@ -16,10 +16,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin','PATH="$PATH":"$HOME/.pub-cache/bin']) {
+                withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
                     sh "dart pub global activate melos"
-                    sh "chmod +x test_coverage.sh"
-                    sh "sh test_coverage.sh"
+                    sh 'export PATH="$PATH":"$HOME/.pub-cache/bin | chmod +x test_coverage.sh | sh test_coverage.sh'
                 }
             }
         }
