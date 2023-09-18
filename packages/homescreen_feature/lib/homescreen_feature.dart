@@ -8,11 +8,10 @@ class HomeScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.redAccent,
       appBar: AppBar(
         title: const Text('Counter app'),
       ),
-      body: const Center(child: Text('Home Screen Feature')),
+      body: const Center(child: Text('Home Screen')),
     );
   }
 }
