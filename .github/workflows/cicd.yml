@@ -26,3 +26,9 @@ jobs:
 
       - name: Run tests
         run: melos run test
+
+      - name: Run lint checks
+        run: melos analyze
+
+      - name: Check formatting
+        run: dart format -o none --set-exit-if-changed .
