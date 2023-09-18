@@ -6,12 +6,12 @@ on:
       - main
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   static-checks:
-    uses: ./.github/workflows/ci.yml
+    uses: ./.github/workflows/static-checks.yml
 
   build_web:
     name: ＠ Build web app
