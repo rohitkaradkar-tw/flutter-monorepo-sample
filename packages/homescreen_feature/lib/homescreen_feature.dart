@@ -12,7 +12,7 @@ class HomeScreenPage extends StatelessWidget {
 }
 
 class _CounterApp extends StatefulWidget {
-  const _CounterApp({super.key, required this.title});
+  const _CounterApp({required this.title});
 
   final String title;
 
