@@ -1,0 +1,36 @@
+name: Static checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  static-checks:
+    name: 🧪 Static checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.13.3'
+          channel: 'stable'
+
+      - name: 🪄 Setup melos
+        run: |
+          flutter pub global activate melos 3.1.1
+          melos bootstrap
+
+      - name: 🧪 Run tests
+        run: melos run test
+
+      - name: 🧂 Run lint checks
+        run: melos analyze
+
+      - name: 📐 Check formatting
+        run: dart format -o none --set-exit-if-changed .
