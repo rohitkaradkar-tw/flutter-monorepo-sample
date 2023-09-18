@@ -42,11 +42,10 @@ jobs:
           flutter build web --release
       - name: 📦 Create deployment zip
         run: zip -r web_app.zip apps/web_app/build/web
-      - name: 📤 Upload deployment zip
-        uses: actions/upload-artifact@v3
+      - name: 📤 Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          name: web_app.zip
-          path: web_app.zip
+          path: 'apps/web_app/build/web'
 
   deploy:
     name: 🚚 Deploy web app
@@ -61,5 +60,3 @@ jobs:
     steps:
       - name: Deploy web app
         uses: actions/deploy-pages@v2
-        with:
-          artifact_name: web_app.zip
