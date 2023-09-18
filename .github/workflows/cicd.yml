@@ -1,0 +1,28 @@
+name: Static checks and Deployments
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.13.0'
+          channel: 'stable'
+
+      - name: Setup melos
+        run: |
+          flutter pub global activate melos 3.1.1
+          melos bootstrap
+
+      - name: Run tests
+        run: melos run test
