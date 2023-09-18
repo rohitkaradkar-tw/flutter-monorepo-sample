@@ -10,6 +10,7 @@ on:
 
 jobs:
   static-checks:
+    name: 🧪 Static checks
     runs-on: ubuntu-latest
 
     steps:
@@ -19,16 +20,42 @@ jobs:
           flutter-version: '3.13.0'
           channel: 'stable'
 
-      - name: Setup melos
+      - name: 🪄 Setup melos
         run: |
           flutter pub global activate melos 3.1.1
           melos bootstrap
 
-      - name: Run tests
+      - name: 🧪 Run tests
         run: melos run test
 
-      - name: Run lint checks
+      - name: 🧂 Run lint checks
         run: melos analyze
 
-      - name: Check formatting
+      - name: 📐 Check formatting
         run: dart format -o none --set-exit-if-changed .
+
+  build_web:
+    name: ＠ Build web app
+    runs-on: ubuntu-latest
+    needs: static-checks
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.13.0'
+          channel: 'stable'
+      - name: 🪄 Setup melos
+        run: |
+          flutter pub global activate melos 3.1.1
+          melos bootstrap
+      - name: ＠ Build web
+        run: |
+          cd apps/web_app
+          flutter build web --release
+      - name: 📦 Create deployment zip
+        run: zip -r web_app.zip apps/web_app/build/web
+      - name: 📤 Upload deployment zip
+        uses: actions/upload-artifact@v3
+        with:
+          name: web_app.zip
+          path: web_app.zip
